@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import LeadForm from '../components/LeadForm.astro';
+
+const services = [
+  { title: 'General Medicine', description: 'Comprehensive primary care for the whole family.', icon: '🩺' },
+  { title: 'Preventive Care', description: 'Routine checkups, vaccinations, and health screenings.', icon: '🛡️' },
+  { title: 'Chronic Disease Management', description: 'Ongoing support for diabetes, hypertension, and more.', icon: '📋' },
+];
+---
+<BaseLayout title="WebAgent Test Site — Quality Care" description="Trusted healthcare services in your community.">
+  <Header slot="header" />
+
+  {/* Hero */}
+  <section style="background:linear-gradient(135deg,#f0f4ff 0%,#fff 100%);padding:100px 24px;">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:64px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:280px;">
+        <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#6366f1;margin-bottom:16px;">
+          Trusted Healthcare
+        </p>
+        <h1 style="font-size:clamp(36px,5vw,60px);font-weight:700;line-height:1.15;margin-bottom:20px;">
+          Your Health,<br/>Our Priority
+        </h1>
+        <p style="font-size:17px;color:#555;line-height:1.7;margin-bottom:32px;max-width:480px;">
+          Quality medical care for every member of your family. We accept most insurance plans and offer bilingual services.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/contacto" style="background:#111;color:#fff;padding:14px 28px;border-radius:6px;font-weight:600;font-size:14px;">
+            Book Appointment
+          </a>
+          <a href="/servicios" style="border:1px solid #ddd;padding:14px 28px;border-radius:6px;font-weight:600;font-size:14px;color:#333;">
+            Our Services
+          </a>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px;background:#e8eeff;border-radius:16px;height:360px;display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:96px;">🏥</span>
+      </div>
+    </div>
+  </section>
+
+  {/* Services */}
+  <section style="padding:80px 24px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <h2 style="font-size:32px;font-weight:700;text-align:center;margin-bottom:12px;">Our Services</h2>
+      <p style="text-align:center;color:#666;margin-bottom:48px;">Comprehensive care tailored to your needs.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+        {services.map(s => <ServiceCard title={s.title} description={s.description} icon={s.icon} />)}
+      </div>
+    </div>
+  </section>
+
+  {/* Contact form */}
+  <section style="padding:80px 24px;background:#f9f9f9;">
+    <div style="max-width:640px;margin:0 auto;">
+      <h2 style="font-size:32px;font-weight:700;text-align:center;margin-bottom:12px;">Get in Touch</h2>
+      <p style="text-align:center;color:#666;margin-bottom:40px;">Book an appointment or ask us anything.</p>
+      <LeadForm />
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
