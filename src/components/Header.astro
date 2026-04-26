@@ -1,0 +1,20 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/servicios', label: 'Services' },
+  { href: '/contacto', label: 'Contact' },
+];
+---
+<header style="position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #eee;padding:0 24px;">
+  <nav style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;">
+    <a href="/" style="font-weight:700;font-size:18px;">WebAgent Test Site</a>
+    <ul style="display:flex;gap:32px;list-style:none;">
+      {navLinks.map(link => (
+        <li><a href={link.href} style="font-size:14px;font-weight:500;color:#444;transition:color .2s;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#444'"">{link.label}</a></li>
+      ))}
+    </ul>
+    <a href="/contacto" style="background:#111;color:#fff;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:600;">
+      Book Appointment
+    </a>
+  </nav>
+</header>
