@@ -9,7 +9,7 @@ const services = [
   { title: 'Preventive Care', description: 'Checkups, vaccinations, and health screenings.', icon: '🛡️' },
   { title: 'Chronic Disease Management', description: 'Support for diabetes, hypertension, and more.', icon: '📋' },
   { title: 'Pediatrics', description: 'Specialized care for infants, children, and teens.', icon: '👶' },
-  { title: 'Women's Health', description: 'Comprehensive gynecological and reproductive care.', icon: '🌸' },
+  { title: "Women's Health", description: 'Comprehensive gynecological and reproductive care.', icon: '🌸' },
   { title: 'Immigration Exam (I-693)', description: 'Authorized civil surgeon exams for immigration purposes.', icon: '📄' },
 ];
 ---
@@ -23,7 +23,9 @@ const services = [
         We offer a wide range of medical services to keep you and your family healthy.
       </p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
-        {services.map(s => <ServiceCard title={s.title} description={s.description} icon={s.icon} />)}
+        {services.map((s) => (
+          <ServiceCard title={s.title} description={s.description} icon={s.icon} />
+        ))}
       </div>
     </div>
   </section>
