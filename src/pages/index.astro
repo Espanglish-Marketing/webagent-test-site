@@ -14,7 +14,7 @@ const services = [
 <BaseLayout title="WebAgent Test Site — Quality Care" description="Trusted healthcare services in your community.">
   <Header slot="header" />
 
-  {/* Hero */}
+  <!-- Hero -->
   <section style="background:linear-gradient(135deg,#f0f4ff 0%,#fff 100%);padding:100px 24px;">
     <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:64px;flex-wrap:wrap;">
       <div style="flex:1;min-width:280px;">
@@ -42,18 +42,20 @@ const services = [
     </div>
   </section>
 
-  {/* Services */}
+  <!-- Services -->
   <section style="padding:80px 24px;">
     <div style="max-width:1100px;margin:0 auto;">
       <h2 style="font-size:32px;font-weight:700;text-align:center;margin-bottom:12px;">Our Services</h2>
       <p style="text-align:center;color:#666;margin-bottom:48px;">Comprehensive care tailored to your needs.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
-        {services.map(s => <ServiceCard title={s.title} description={s.description} icon={s.icon} />)}
+        {services.map((s) => (
+          <ServiceCard title={s.title} description={s.description} icon={s.icon} />
+        ))}
       </div>
     </div>
   </section>
 
-  {/* Contact form */}
+  <!-- Contact form -->
   <section style="padding:80px 24px;background:#f9f9f9;">
     <div style="max-width:640px;margin:0 auto;">
       <h2 style="font-size:32px;font-weight:700;text-align:center;margin-bottom:12px;">Get in Touch</h2>
