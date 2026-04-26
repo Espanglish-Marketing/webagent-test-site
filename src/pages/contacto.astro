@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LeadForm from '../components/LeadForm.astro';
+---
+<BaseLayout title="Contact — WebAgent Test Site" description="Get in touch with us.">
+  <Header slot="header" />
+
+  <section style="padding:80px 24px;">
+    <div style="max-width:1100px;margin:0 auto;display:flex;gap:64px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:280px;">
+        <h1 style="font-size:40px;font-weight:700;margin-bottom:16px;">Contact Us</h1>
+        <p style="color:#666;font-size:16px;line-height:1.7;margin-bottom:32px;">
+          Fill out the form and we'll get back to you as soon as possible.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="font-size:20px;">📞</span>
+            <span style="font-size:15px;color:#333;">Call us: (704) 555-0100</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="font-size:20px;">📍</span>
+            <span style="font-size:15px;color:#333;">3641 Central Ave, Charlotte, NC</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="font-size:20px;">🕒</span>
+            <span style="font-size:15px;color:#333;">Mon–Fri: 8am – 6pm</span>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:300px;">
+        <LeadForm />
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
