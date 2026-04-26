@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+
+const services = [
+  { title: 'General Medicine', description: 'Primary care and routine exams for all ages.', icon: '🩺' },
+  { title: 'Preventive Care', description: 'Checkups, vaccinations, and health screenings.', icon: '🛡️' },
+  { title: 'Chronic Disease Management', description: 'Support for diabetes, hypertension, and more.', icon: '📋' },
+  { title: 'Pediatrics', description: 'Specialized care for infants, children, and teens.', icon: '👶' },
+  { title: 'Women's Health', description: 'Comprehensive gynecological and reproductive care.', icon: '🌸' },
+  { title: 'Immigration Exam (I-693)', description: 'Authorized civil surgeon exams for immigration purposes.', icon: '📄' },
+];
+---
+<BaseLayout title="Services — WebAgent Test Site" description="Full range of medical services available.">
+  <Header slot="header" />
+
+  <section style="padding:80px 24px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <h1 style="font-size:40px;font-weight:700;margin-bottom:12px;">Our Services</h1>
+      <p style="color:#666;font-size:17px;margin-bottom:48px;">
+        We offer a wide range of medical services to keep you and your family healthy.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+        {services.map(s => <ServiceCard title={s.title} description={s.description} icon={s.icon} />)}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
