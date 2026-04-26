@@ -13,7 +13,9 @@ const services = Astro.props.services ?? ['General Consultation', 'Other'];
       style="flex:1;min-width:200px;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;" />
     <select name="servicio"
       style="flex:1;min-width:200px;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;background:#fff;">
-      {services.map((s: string) => <option value={s}>{s}</option>)}
+      {services.map((s) => (
+        <option value={s}>{s}</option>
+      ))}
     </select>
   </div>
   <textarea name="mensaje" placeholder="Tell us how we can help you..." rows="4"
