@@ -1,0 +1,59 @@
+---
+const services = Astro.props.services ?? ['General Consultation', 'Other'];
+---
+<form id="lead-form" style="display:flex;flex-direction:column;gap:16px;">
+  <div style="display:flex;gap:16px;flex-wrap:wrap;">
+    <input name="nombre" type="text" placeholder="Full name *" required
+      style="flex:1;min-width:200px;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;" />
+    <input name="email" type="email" placeholder="Email *" required
+      style="flex:1;min-width:200px;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;" />
+  </div>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;">
+    <input name="telefono" type="tel" placeholder="Phone *" required
+      style="flex:1;min-width:200px;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;" />
+    <select name="servicio"
+      style="flex:1;min-width:200px;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;background:#fff;">
+      {services.map((s: string) => <option value={s}>{s}</option>)}
+    </select>
+  </div>
+  <textarea name="mensaje" placeholder="Tell us how we can help you..." rows="4"
+    style="padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;resize:vertical;"></textarea>
+  <button type="submit"
+    style="background:#111;color:#fff;padding:14px 28px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;align-self:flex-start;">
+    Send Message →
+  </button>
+  <p id="form-status" style="font-size:13px;color:#555;min-height:20px;"></p>
+</form>
+
+<script>
+  const form = document.getElementById('lead-form') as HTMLFormElement;
+  const status = document.getElementById('form-status')!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = 'Sending...';
+
+    const data = Object.fromEntries(new FormData(form));
+    data.fuente = document.referrer || 'direct';
+    data.site = window.location.hostname;
+
+    try {
+      const res = await fetch('http://localhost:8000/api/leads/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        status.textContent = 'Message sent! We will contact you shortly.';
+        status.style.color = '#16a34a';
+        form.reset();
+      } else {
+        status.textContent = 'Something went wrong. Please try again.';
+        status.style.color = '#dc2626';
+      }
+    } catch {
+      status.textContent = 'Connection error. Please try again.';
+      status.style.color = '#dc2626';
+    }
+  });
+</script>
